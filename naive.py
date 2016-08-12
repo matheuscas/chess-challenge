@@ -17,6 +17,7 @@ def get_line_by_index(index, M):
                 return l
     return -1
 
+# FIX: King moves in diagonal
 def mirror_king(index, mirror, configuration, M, N):
     """
     Mirror King's position where it could attack. Returns false if there is a piece in that space.
