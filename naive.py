@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 import itertools
 
+# pieces
+KING = 1
+QUEEN = 2
+BISHOP = 3
+ROOK = 4
+KNIGHT = 5
+
 def get_col_by_index(index, N):
     return index % N
 
@@ -153,29 +160,13 @@ def is_valid_configuration(configuration, M, N):
 
     return True
 
-M = 3 # lines
-N = 3 # cols
-BOARD = M * N
 
-# pieces
-KING = 1
-QUEEN = 2
-BISHOP = 3
-ROOK = 4
-KNIGHT = 5
-
-test_1 = [KING, KING, ROOK]
-initial_conf = test_1 + (BOARD - len(test_1)) * [0]
-# all_configurations = set(itertools.permutations(initial_conf))
-valid_configurations = []
-all_configurations = [
-    (1,0,1,0,0,0,0,4,0),
-    (1,0,0,0,0,4,1,0,0),
-    (0,0,1,4,0,0,0,0,1),
-    (0,4,0,0,0,0,1,0,1)
-]
-for conf in all_configurations:
-    if is_valid_configuration(list(conf), M, N):
-        print conf
-        valid_configurations.append(list(conf))
-print len(valid_configurations)
+def chess_challenge(pieces, M, N):
+    BOARD = M * N
+    initial_conf = pieces + (BOARD - len(pieces)) * [0]
+    all_configurations = set(itertools.permutations(initial_conf))
+    valid_configurations = []
+    for conf in all_configurations:
+        if is_valid_configuration(list(conf), M, N):
+            valid_configurations.append(list(conf))
+    return valid_configurations
