@@ -17,7 +17,7 @@ def get_line_by_index(index, M):
                 return l
     return -1
 
-# FIX: King moves in diagonal
+
 def mirror_king(index, mirror, configuration, M, N):
     """
     Mirror King's position where it could attack. Returns false if there is a piece in that space.
@@ -54,6 +54,36 @@ def mirror_king(index, mirror, configuration, M, N):
         else:
             mirror[index - 3] = KING
 
+    # Diagonals
+
+    # upper left
+    if col > 0 and line > 1:
+        if configuration[index - 3 - 1] != 0:
+            return False
+        else:
+            mirror[index - 3 - 1] = KING
+
+    # down left
+    if col > 0 and line < M:
+        if configuration[index + 3 - 1] != 0:
+            return False
+        else:
+            mirror[index + 3 - 1] = KING
+
+    # upper righ
+    if col < (N - 1) and line > 1:
+        if configuration[index - 3 + 1] != 0:
+            return False
+        else:
+            mirror[index - 3 + 1] = KING
+
+    # down right
+    if col < (N - 1) and line < M:
+        if configuration[index + 3 + 1] != 0:
+            return False
+        else:
+            mirror[index + 3 + 1] = KING
+
     return True
 
 
@@ -64,6 +94,9 @@ def mirror_rook(index, mirror, configuration, M, N):
 def is_valid_configuration(configuration, M, N):
     mirror = list(configuration)
     for index, piece in enumerate(configuration):
+        if piece == 0:
+            continue
+
         if piece == KING:
             valid_mirror = mirror_king(index, mirror, configuration, M, N)
             if not valid_mirror:
@@ -88,14 +121,14 @@ KNIGHT = 5
 
 test_1 = [KING, KING, ROOK]
 initial_conf = test_1 + (BOARD - len(test_1)) * [0]
-all_configurations = set(itertools.permutations(initial_conf))
+# all_configurations = set(itertools.permutations(initial_conf))
 valid_configurations = []
-# all_configurations = [
-#     (1,0,1,0,0,0,0,4,0),
-#     (1,0,0,0,0,4,1,0,0),
-#     (0,0,1,4,0,0,0,0,1),
-#     (0,4,0,0,0,0,1,0,1)
-# ]
+all_configurations = [
+    (1,0,1,0,0,0,0,4,0),
+    (1,0,0,0,0,4,1,0,0),
+    (0,0,1,4,0,0,0,0,1),
+    (0,4,0,0,0,0,1,0,1)
+]
 for conf in all_configurations:
     if is_valid_configuration(list(conf), M, N):
         print conf
