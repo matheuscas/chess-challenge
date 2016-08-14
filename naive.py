@@ -21,12 +21,13 @@ def get_line_by_index(index, M):
 def mirror_king(index, mirror, configuration, M, N):
     """
     Mirror King's position where it could attack. Returns false if there is a piece in that space.
-    A king moves one space to every side, except diagonals.
+    A king moves one space to every side.
     """
+
     col = get_col_by_index(index, N)
     line = get_line_by_index(index, M)
 
-    # mirror to righ (if possible)
+    # mirror to right (if possible)
     if col < (N - 1):
         if configuration[index + 1] != 0:
             return False
@@ -70,7 +71,7 @@ def mirror_king(index, mirror, configuration, M, N):
         else:
             mirror[index + 3 - 1] = KING
 
-    # upper righ
+    # upper right
     if col < (N - 1) and line > 1:
         if configuration[index - 3 + 1] != 0:
             return False
@@ -88,6 +89,50 @@ def mirror_king(index, mirror, configuration, M, N):
 
 
 def mirror_rook(index, mirror, configuration, M, N):
+    """
+    Mirror Rook's position where it could attack. Returns false if there is a piece in that space.
+    A ROOK moves through intire line and column from its position
+    """
+    
+    col = get_col_by_index(index, N)
+    line = get_line_by_index(index, M)
+
+    # mirror to right (if possible)
+    if col < (N - 1):
+        spaces = (N - 1) - col
+        for i in range(1, spaces + 1):
+            if configuration[index + i] != 0:
+                return False
+            else:
+                mirror[index + i] = ROOK
+
+    # mirror to left (if possible)
+    if col > 0:
+        spaces = col
+        for i in range(1, spaces + 1):
+            if configuration[index - i] != 0:
+                return False
+            else:
+                mirror[index - i] = ROOK
+
+    # mirror down (if possible)
+    if line < M:
+        spaces = M - line
+        for i in range(1, spaces + 1):
+            if configuration[index + (3 * i)] != 0:
+                return False
+            else:
+                mirror[index + (3 * i)] = ROOK
+
+    # mirror up (if possible)
+    if line > 1:
+        spaces = line - 1
+        for i in range(1, spaces + 1):
+            if configuration[index - (3 * i)] != 0:
+                return False
+            else:
+                mirror[index - (3 * i)] = ROOK
+
     return True
 
 
