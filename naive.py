@@ -20,7 +20,7 @@ def get_line_by_index(index, M):
         return M
     else:
         for l in range(2, M):
-            if index > (l - 1) * M and index < l * M:
+            if index >= (l - 1) * M and index < l * M:
                 return l
     return -1
 
@@ -126,19 +126,86 @@ def mirror_rook(index, mirror, configuration, M, N):
     if line < M:
         spaces = M - line
         for i in range(1, spaces + 1):
-            if configuration[index + (3 * i)] != 0:
+            if configuration[index + (N * i)] != 0:
                 return False
             else:
-                mirror[index + (3 * i)] = ROOK
+                mirror[index + (N * i)] = ROOK
 
     # mirror up (if possible)
     if line > 1:
         spaces = line - 1
         for i in range(1, spaces + 1):
-            if configuration[index - (3 * i)] != 0:
+            if configuration[index - (N * i)] != 0:
                 return False
             else:
-                mirror[index - (3 * i)] = ROOK
+                mirror[index - (N * i)] = ROOK
+
+    return True
+
+def mirror_knight(index, mirror, configuration, M, N):
+    """
+    Mirror Knight's position where it could attack. Returns false if there is a piece in that space.
+    A Knight moves in 'L' moves. 
+    """
+
+    col = get_col_by_index(index, N)
+    line = get_line_by_index(index, M)
+
+    #first mov: left and up
+    if line > 1 and col > 1:
+        if configuration[index - 2 - N] != 0:
+            return False
+        else:
+            mirror[index - 2 - N] = KNIGHT
+
+    #second mov: up and left
+    if line > 2 and col > 0:
+        if configuration[index - (N * 2) - 1] != 0:
+            return False
+        else:
+            mirror[index - (N * 2) - 1] = KNIGHT
+
+    #third mov: up and right
+    if line > 2 and col < (N - 1):
+        if configuration[index - (N * 2) + 1] != 0:
+            return False
+        else:
+            mirror[index - (N * 2) + 1] = KNIGHT
+
+    #fourth mov: right and up
+    if line > 1 and col < (N - 2):
+        if configuration[index + 2 - N] != 0:
+            return False
+        else:
+            mirror[index + 2 - N] = KNIGHT
+
+    #fifth mov: right and down
+    if line < M and col < (N - 2):
+        if configuration[index + 2 + N] != 0:
+            return False
+        else:
+            mirror[index + 2 + N] = KNIGHT
+
+    #sixth mov: down and right
+    if line < (M - 2) and col < (N - 1):
+        if configuration[index + (N * 2) + 1] != 0:
+            return False
+        else:
+            mirror[index + (N * 2) + 1] = KNIGHT
+
+    #seventh mov: down and left
+    if line < (M - 2) and col > 0:
+        if configuration[index + (N * 2) - 1] != 0:
+            return False
+        else:
+            mirror[index + (N * 2) - 1] = KNIGHT
+
+    #eighth mov: left and down
+    if line < M and col > 1:
+        if configuration[index - 2 + N] != 0:
+            return False
+        else:
+            mirror[index - 2 + N] = KNIGHT
 
     return True
 
@@ -155,6 +222,10 @@ def is_valid_configuration(configuration, M, N):
                 return False
         elif piece == ROOK:
             valid_mirror = mirror_rook(index, mirror, configuration, M, N)
+            if not valid_mirror:
+                return False
+        elif piece == KNIGHT:
+            valid_mirror = mirror_knight(index, mirror, configuration, M, N)
             if not valid_mirror:
                 return False
 
