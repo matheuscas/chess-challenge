@@ -8,6 +8,10 @@ BISHOP = 3
 ROOK = 4
 KNIGHT = 5
 
+OCCUPIED = -1
+
+PIECES = [KING, QUEEN, BISHOP, ROOK, KNIGHT]
+
 def get_col_by_index(index, N):
     return index % N
 
