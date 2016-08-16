@@ -50,47 +50,47 @@ def mirror_king(index, mirror, configuration, M, N):
 
     # mirror down (if possible)
     if line < M:
-        if configuration[index + 3] != 0:
+        if configuration[index + N] != 0:
             return False
         else:
-            mirror[index + 3] = KING
+            mirror[index + N] = KING
 
     # mirror up (if possible)
     if line > 1:
-        if configuration[index - 3] != 0:
+        if configuration[index - N] != 0:
             return False
         else:
-            mirror[index - 3] = KING
+            mirror[index - N] = KING
 
     # Diagonals
 
     # upper left
     if col > 0 and line > 1:
-        if configuration[index - 3 - 1] != 0:
+        if configuration[index - N - 1] != 0:
             return False
         else:
-            mirror[index - 3 - 1] = KING
+            mirror[index - N - 1] = KING
 
     # down left
     if col > 0 and line < M:
-        if configuration[index + 3 - 1] != 0:
+        if configuration[index + N - 1] != 0:
             return False
         else:
-            mirror[index + 3 - 1] = KING
+            mirror[index + N - 1] = KING
 
     # upper right
     if col < (N - 1) and line > 1:
-        if configuration[index - 3 + 1] != 0:
+        if configuration[index - N + 1] != 0:
             return False
         else:
-            mirror[index - 3 + 1] = KING
+            mirror[index - N + 1] = KING
 
     # down right
     if col < (N - 1) and line < M:
-        if configuration[index + 3 + 1] != 0:
+        if configuration[index + N + 1] != 0:
             return False
         else:
-            mirror[index + 3 + 1] = KING
+            mirror[index + N + 1] = KING
 
     return True
 
