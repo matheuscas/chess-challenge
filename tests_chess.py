@@ -1,4 +1,4 @@
-from chess import QUEEN, BISHOP, OCCUPIED, fill_board_w_queen, fill_board_w_bishop 
+from chess import * 
 
 def test_fill_board_w_queen_second_col_second_line():
     board = [0,0,0,0,
@@ -126,4 +126,68 @@ def test_fill_board_w_bishop_last_col_last_line():
 
     bishop_position = 15 # last col and last line
     updated_board = fill_board_w_bishop(BISHOP, bishop_position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_rook_second_col_second_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [0,OCCUPIED,0,0,
+                    OCCUPIED,ROOK,OCCUPIED,OCCUPIED,
+                    0,OCCUPIED,0,0,
+                    0,OCCUPIED,0,0]
+
+    M = N = 4
+    position = 5 # second col and second line
+    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_rook_third_col_third_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [0,0,OCCUPIED,0,
+                    0,0,OCCUPIED,0,
+                    OCCUPIED,OCCUPIED,ROOK,OCCUPIED,
+                    0,0,OCCUPIED,0]
+
+    M = N = 4
+    position = 10
+    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_rook_first_col_first_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [0,0,0,OCCUPIED,
+                    0,0,0,OCCUPIED,
+                    0,0,0,OCCUPIED,
+                    OCCUPIED,OCCUPIED,OCCUPIED,ROOK]
+
+    M = N = 4
+    position = 15
+    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_rook_last_col_last_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [ROOK,OCCUPIED,OCCUPIED,OCCUPIED,
+                    OCCUPIED,0,0,0,
+                    OCCUPIED,0,0,0,
+                    OCCUPIED,0,0,0]
+
+    M = N = 4
+    position = 0
+    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
     assert updated_board == expected_board
