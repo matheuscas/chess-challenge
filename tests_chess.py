@@ -160,7 +160,7 @@ def test_fill_board_w_rook_third_col_third_line():
     updated_board = fill_board_w_rook(ROOK, position, board, M, N)
     assert updated_board == expected_board
 
-def test_fill_board_w_rook_first_col_first_line():
+def test_fill_board_w_rook_last_col_last_line():
     board = [0,0,0,0,
             0,0,0,0,
             0,0,0,0,
@@ -176,7 +176,7 @@ def test_fill_board_w_rook_first_col_first_line():
     updated_board = fill_board_w_rook(ROOK, position, board, M, N)
     assert updated_board == expected_board
 
-def test_fill_board_w_rook_last_col_last_line():
+def test_fill_board_w_rook_first_col_first_line():
     board = [0,0,0,0,
             0,0,0,0,
             0,0,0,0,
@@ -190,4 +190,68 @@ def test_fill_board_w_rook_last_col_last_line():
     M = N = 4
     position = 0
     updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_king_second_col_second_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [OCCUPIED,OCCUPIED,OCCUPIED,0,
+                    OCCUPIED,KING,OCCUPIED,0,
+                    OCCUPIED,OCCUPIED,OCCUPIED,0,
+                    0,0,0,0]
+
+    M = N = 4
+    position = 5 # second col and second line
+    updated_board = fill_board_w_king(KING, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_king_third_col_third_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [0,0,0,0,
+                    0,OCCUPIED,OCCUPIED,OCCUPIED,
+                    0,OCCUPIED,KING,OCCUPIED,
+                    0,OCCUPIED,OCCUPIED,OCCUPIED]
+
+    M = N = 4
+    position = 10
+    updated_board = fill_board_w_king(KING, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_king_first_col_first_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [KING,OCCUPIED,0,0,
+                    OCCUPIED,OCCUPIED,0,0,
+                    0,0,0,0,
+                    0,0,0,0]
+
+    M = N = 4
+    position = 0
+    updated_board = fill_board_w_king(KING, position, board, M, N)
+    assert updated_board == expected_board
+
+def test_fill_board_w_king_last_col_last_line():
+    board = [0,0,0,0,
+            0,0,0,0,
+            0,0,0,0,
+            0,0,0,0]
+
+    expected_board = [0,0,0,0,
+                    0,0,0,0,
+                    0,0,OCCUPIED,OCCUPIED,
+                    0,0,OCCUPIED,KING]
+
+    M = N = 4
+    position = 15
+    updated_board = fill_board_w_king(KING, position, board, M, N)
     assert updated_board == expected_board
