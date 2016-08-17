@@ -185,3 +185,86 @@ def fill_board_w_knight(perm_piece, board_index, board_copy, M, N):
         board_copy[board_index] = KNIGHT
 
     return board_copy
+
+def fill_board_w_queen(perm_piece, board_index, board_copy, M, N):
+    
+    col = util.get_col_by_index(board_index, N)
+    line = util.get_line_by_index(board_index, M)
+
+    local_board = board_copy[:]
+
+    # mirror to right (if possible) like rook
+    if col < (N - 1):
+        spaces = (N - 1) - col
+        for i in range(1, spaces + 1):
+            if local_board[board_index + i] in PIECES:
+                return False
+            local_board[board_index + i] = OCCUPIED
+
+    # mirror to left (if possible)
+    if col > 0:
+        spaces = col
+        for i in range(1, spaces + 1):
+            if local_board[board_index - i] in PIECES:
+                return False
+            local_board[board_index - i] = OCCUPIED
+
+    # mirror down (if possible) like rook
+    if line < M:
+        spaces = M - line
+        for i in range(1, spaces + 1):
+            if local_board[board_index + (N * i)] in PIECES:
+                return False
+            local_board[board_index + (N * i)] = OCCUPIED
+
+    # mirror up (if possible) like rook
+    if line > 1:
+        spaces = line - 1
+        for i in range(1, spaces + 1):
+            if local_board[board_index - (N * i)] in PIECES:
+                return False
+            local_board[board_index - (N * i)] = OCCUPIED
+
+    # Diagonals
+
+    # # upper left
+    if col > 0 and line > 1:
+        steps = col if col <= (line - 1) else (line - 1)
+        for step in range(1, steps + 1):
+            if local_board[board_index - (step * N) - step] in PIECES:
+                return False
+            local_board[board_index - (step * N) - step] = OCCUPIED
+
+    # # down left
+    if col > 0 and line < M:
+        steps = col if col <= (M - line) else (M - line)
+        for step in range(1, steps + 1):
+            if local_board[board_index + (N * step) - step] in PIECES:
+                return False
+            local_board[board_index + (N * step) - step] = OCCUPIED
+
+    # # upper right
+    if col < (N - 1) and line > 1:
+        steps = (N - 1 - col) if (N - 1 - col) <= (line - 1) else (line - 1)
+        for step in range(1, steps + 1):
+            if local_board[board_index - (N * step) + step] in PIECES:
+                return False
+            local_board[board_index - (N * step) + step] = OCCUPIED
+
+    # # down right
+    if col < (N - 1) and line < M:
+        steps = (N - 1 - col) if (N - 1 - col) <= (M - line) else (M - line)
+        for step in range(1, steps + 1):
+            if local_board[board_index + (N * step) + step] in PIECES:
+                return False
+            local_board[board_index + (N * step) + step] = OCCUPIED
+
+    
+    # put the queen itself
+    if board_copy[board_index] != 0:
+        return False
+    else:
+        board_copy = local_board
+        board_copy[board_index] = QUEEN
+
+    return board_copy
