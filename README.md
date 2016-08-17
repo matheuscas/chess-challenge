@@ -92,3 +92,18 @@ Please follow best practices whilst writing your code. Tests, proper commits, pr
 - Code should be covered with unit tests in at least 90%
 - Pylint score should be at least 9.0/10
 - docstrings should comply to pep257 for every public class and method and module function (except from tests)
+
+### Usage
+For now, only squared chess boards.
+
+```
+import challenge
+import chess
+pieces = [chess.KING, chess.KING, chess.ROOK]
+M = N = 3 # board dimensions
+challenge.chess_challenge(pieces, M, N)
+```
+
+### Tests 
+Install requirements: ```pip install -r requirements.txt```
+Run tests: ```nosetests```
