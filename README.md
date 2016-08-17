@@ -96,7 +96,7 @@ Please follow best practices whilst writing your code. Tests, proper commits, pr
 ### Usage
 For now, only squared chess boards.
 
-```
+```python
 import challenge
 import chess
 pieces = [chess.KING, chess.KING, chess.ROOK]
