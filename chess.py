@@ -161,13 +161,13 @@ def fill_board_w_knight(perm_piece, board_index, board_copy, M, N):
         local_board[board_index + 2 + N] = OCCUPIED
 
     #sixth mov: down and right
-    if line < (M - 2) and col < (N - 1):
+    if line <= (M - 2) and col < (N - 1):
         if local_board[board_index + (N * 2) + 1] in PIECES:
             return False
         local_board[board_index + (N * 2) + 1] = OCCUPIED
 
     #seventh mov: down and left
-    if line < (M - 2) and col > 0:
+    if line <= (M - 2) and col > 0:
         if local_board[board_index + (N * 2) - 1] in PIECES:
             return False
         local_board[board_index + (N * 2) - 1] = OCCUPIED
