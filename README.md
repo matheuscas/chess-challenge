@@ -101,7 +101,7 @@ import challenge
 import chess
 pieces = [chess.KING, chess.KING, chess.ROOK]
 M = N = 3 # board dimensions
-challenge.chess_challenge(pieces, M, N)
+unique_configurations, total, time = challenge.chess_challenge(pieces, M, N)
 ```
 
 ### Tests 
