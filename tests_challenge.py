@@ -11,7 +11,7 @@ def test_challenge_3x3_2KINGS_1ROOK():
         [0, 0, chess.KING, chess.ROOK, 0, 0, 0, 0, chess.KING],                                                                                                                                                               
         [0, chess.ROOK, 0, 0, 0, 0, chess.KING, 0, chess.KING],   
     ]
-    results = challenge.chess_challenge(perm, M, N)
+    results = challenge.chess_challenge(perm, M, N)[0]
     for uc in results:
         assert (uc in expected_results) == True
 
