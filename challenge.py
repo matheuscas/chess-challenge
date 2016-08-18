@@ -27,6 +27,12 @@ def __update_board(board, perm_piece, board_index, lines, cols):
     elif perm_piece == chess.KNIGHT:
         return chess.fill_board_w_knight(
             board_index, board_copy, lines, cols)
+    elif perm_piece == chess.QUEEN:
+        return chess.fill_board_w_queen(
+            board_index, board_copy, lines, cols)
+    elif perm_piece == chess.BISHOP:
+        return chess.fill_board_w_bishop(
+            board_index, board_copy, lines, cols)
 
 
 def __find_valid_position_to(perm, board, original_perm, lines, cols):
