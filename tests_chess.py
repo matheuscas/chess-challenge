@@ -13,7 +13,7 @@ def test_fill_board_w_queen_second_col_second_line():
 
     M = N = 4
     queen_position = 5 # second col and second line
-    updated_board = fill_board_w_queen(QUEEN, queen_position, board, M, N)
+    updated_board = fill_board_w_queen(queen_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_queen_third_col_third_line():
@@ -29,7 +29,7 @@ def test_fill_board_w_queen_third_col_third_line():
                         0,OCCUPIED,OCCUPIED,OCCUPIED]
 
     queen_position = 10 # third col and third line
-    updated_board = fill_board_w_queen(QUEEN, queen_position, board, M, N)
+    updated_board = fill_board_w_queen(queen_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_queen_first_col_first_line():
@@ -45,7 +45,7 @@ def test_fill_board_w_queen_first_col_first_line():
                         OCCUPIED,0,0,OCCUPIED]
 
     queen_position = 0 # first col and first line
-    updated_board = fill_board_w_queen(QUEEN, queen_position, board, M, N)
+    updated_board = fill_board_w_queen(queen_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_queen_last_col_last_line():
@@ -61,7 +61,7 @@ def test_fill_board_w_queen_last_col_last_line():
                         OCCUPIED,OCCUPIED,OCCUPIED,QUEEN]
 
     queen_position = 15 # last col and last line
-    updated_board = fill_board_w_queen(QUEEN, queen_position, board, M, N)
+    updated_board = fill_board_w_queen(queen_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_bishop_second_col_second_line():
@@ -77,7 +77,7 @@ def test_fill_board_w_bishop_second_col_second_line():
 
     M = N = 4
     bishop_position = 5 # second col and second line
-    updated_board = fill_board_w_bishop(BISHOP, bishop_position, board, M, N)
+    updated_board = fill_board_w_bishop(bishop_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_bishop_third_col_third_line():
@@ -93,7 +93,7 @@ def test_fill_board_w_bishop_third_col_third_line():
                         0,OCCUPIED,0,OCCUPIED]
 
     bishop_position = 10 # third col and third line
-    updated_board = fill_board_w_bishop(BISHOP, bishop_position, board, M, N)
+    updated_board = fill_board_w_bishop(bishop_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_bishop_first_col_first_line():
@@ -109,7 +109,7 @@ def test_fill_board_w_bishop_first_col_first_line():
                         0,0,0,OCCUPIED]
 
     bishop_position = 0 # first col and first line
-    updated_board = fill_board_w_bishop(BISHOP, bishop_position, board, M, N)
+    updated_board = fill_board_w_bishop(bishop_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_bishop_last_col_last_line():
@@ -125,7 +125,7 @@ def test_fill_board_w_bishop_last_col_last_line():
                         0,0,0,BISHOP]
 
     bishop_position = 15 # last col and last line
-    updated_board = fill_board_w_bishop(BISHOP, bishop_position, board, M, N)
+    updated_board = fill_board_w_bishop(bishop_position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_rook_second_col_second_line():
