@@ -5,6 +5,7 @@
 
 import chess
 import util
+import time
 
 
 def __update_board(board, perm_piece, board_index, lines, cols):
@@ -63,7 +64,10 @@ def __find_valid_position_to(perm, board, original_perm, lines, cols):
 
 
 def chess_challenge(permutation, lines, cols):
-    """Main method of the challenge
+    """Main method of the challenge. This function returns in the following order:
+        - All valid unique configurations
+        - The total number of unique configurations
+        - The time it took to get the final score (in seconds)
 
     Keyword arguments:
     permutation -- The list of pieces to put on the board.
@@ -71,6 +75,7 @@ def chess_challenge(permutation, lines, cols):
     lines -- Number of board lines (integer)
     cols -- Number of board columns (integer)
     """
+    start = time.clock()
     length = lines * cols
     board = length * [0]
     valid_configurations = __find_valid_position_to(permutation, board, permutation, lines, cols)
@@ -85,4 +90,5 @@ def chess_challenge(permutation, lines, cols):
         for idx, i in enumerate(unique_config):
             if i == -1:
                 unique_config[idx] = 0
-    return unique_configurations
+    end = time.clock()       
+    return unique_configurations, len(unique_configurations), "%.6f" % (end - start)
