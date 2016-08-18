@@ -20,13 +20,13 @@ def __update_board(board, perm_piece, board_index, lines, cols):
     board_copy = board[:]
     if perm_piece == chess.KING:
         return chess.fill_board_w_king(
-            perm_piece, board_index, board_copy, lines, cols)
+            board_index, board_copy, lines, cols)
     elif perm_piece == chess.ROOK:
         return chess.fill_board_w_rook(
-            perm_piece, board_index, board_copy, lines, cols)
+            board_index, board_copy, lines, cols)
     elif perm_piece == chess.KNIGHT:
         return chess.fill_board_w_knight(
-            perm_piece, board_index, board_copy, lines, cols)
+            board_index, board_copy, lines, cols)
 
 
 def __find_valid_position_to(perm, board, original_perm, lines, cols):

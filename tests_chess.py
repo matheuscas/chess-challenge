@@ -141,7 +141,7 @@ def test_fill_board_w_rook_second_col_second_line():
 
     M = N = 4
     position = 5 # second col and second line
-    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    updated_board = fill_board_w_rook(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_rook_third_col_third_line():
@@ -157,7 +157,7 @@ def test_fill_board_w_rook_third_col_third_line():
 
     M = N = 4
     position = 10
-    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    updated_board = fill_board_w_rook(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_rook_last_col_last_line():
@@ -173,7 +173,7 @@ def test_fill_board_w_rook_last_col_last_line():
 
     M = N = 4
     position = 15
-    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    updated_board = fill_board_w_rook(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_rook_first_col_first_line():
@@ -189,7 +189,7 @@ def test_fill_board_w_rook_first_col_first_line():
 
     M = N = 4
     position = 0
-    updated_board = fill_board_w_rook(ROOK, position, board, M, N)
+    updated_board = fill_board_w_rook(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_king_second_col_second_line():
@@ -205,7 +205,7 @@ def test_fill_board_w_king_second_col_second_line():
 
     M = N = 4
     position = 5 # second col and second line
-    updated_board = fill_board_w_king(KING, position, board, M, N)
+    updated_board = fill_board_w_king(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_king_third_col_third_line():
@@ -221,7 +221,7 @@ def test_fill_board_w_king_third_col_third_line():
 
     M = N = 4
     position = 10
-    updated_board = fill_board_w_king(KING, position, board, M, N)
+    updated_board = fill_board_w_king(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_king_first_col_first_line():
@@ -237,7 +237,7 @@ def test_fill_board_w_king_first_col_first_line():
 
     M = N = 4
     position = 0
-    updated_board = fill_board_w_king(KING, position, board, M, N)
+    updated_board = fill_board_w_king(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_king_last_col_last_line():
@@ -253,7 +253,7 @@ def test_fill_board_w_king_last_col_last_line():
 
     M = N = 4
     position = 15
-    updated_board = fill_board_w_king(KING, position, board, M, N)
+    updated_board = fill_board_w_king(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_knight_second_col_second_line():
@@ -269,7 +269,7 @@ def test_fill_board_w_knight_second_col_second_line():
 
     M = N = 4
     position = 5 # second col and second line
-    updated_board = fill_board_w_knight(KNIGHT, position, board, M, N)
+    updated_board = fill_board_w_knight(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_knight_third_col_third_line():
@@ -285,7 +285,7 @@ def test_fill_board_w_knight_third_col_third_line():
 
     M = N = 4
     position = 10
-    updated_board = fill_board_w_knight(KNIGHT, position, board, M, N)
+    updated_board = fill_board_w_knight(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_knight_first_col_first_line():
@@ -301,7 +301,7 @@ def test_fill_board_w_knight_first_col_first_line():
 
     M = N = 4
     position = 0
-    updated_board = fill_board_w_knight(KNIGHT, position, board, M, N)
+    updated_board = fill_board_w_knight(position, board, M, N)
     assert updated_board == expected_board
 
 def test_fill_board_w_knight_last_col_last_line():
@@ -317,5 +317,5 @@ def test_fill_board_w_knight_last_col_last_line():
 
     M = N = 4
     position = 15
-    updated_board = fill_board_w_knight(KNIGHT, position, board, M, N)
+    updated_board = fill_board_w_knight(position, board, M, N)
     assert updated_board == expected_board
